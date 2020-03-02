@@ -1,7 +1,8 @@
 from django.db import models
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanelfrom wagtail.search import index
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.search import index
 
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -21,9 +22,9 @@ class BlogIndexPage(Page):
         FieldPanel('intro', classname="full")
     ]
 
-class BlogPageTag(TaggedItemBase):
+class BlogPostTag(TaggedItemBase):
     content_object = ParentalKey(
-        'BlogPage',
+        'BlogPost',
         related_name='tagged_items',
         on_delete=models.CASCADE
     )
@@ -33,7 +34,7 @@ class BlogPost(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
     body = RichTextField(blank=True)
-    tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
+    tags = ClusterTaggableManager(through=BlogPostTag, blank=True)
 
     search_fields = Page.search_fields + [
         index.SearchField('intro'),
