@@ -24,6 +24,7 @@ class BlogIndexPage(Page):
         FieldPanel('intro', classname="full")
     ]
 
+@register_snippet
 class BlogPostTag(TaggedItemBase):
     content_object = ParentalKey(
         'BlogPost',
