@@ -16,7 +16,7 @@
         <h1 class="mt-4">{{ page.title }}</h1>
         <!-- Date/Time -->
         {% with categories=page.categories.all %}
-        <p>Posted on {{ page.date }}{% if categories %} in {% for category in categories %}{{ category.name }}, {% endfor %} {% endif %}</p>
+        <p>Posted on {{ page.date }}{% if categories %} in {{ categories|join:", " }}{% endif %}</p>
         {% endwith %}
         <hr>
 
