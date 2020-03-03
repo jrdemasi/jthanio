@@ -14,9 +14,6 @@
 
         <!-- Title -->
         <h1 class="mt-4">{{ page.title }}</h1>
-
-        <hr>
-
         <!-- Date/Time -->
         <p>Posted on {{ page.date }} in CATEGORY</p>
 
@@ -38,36 +35,20 @@
       <!-- Sidebar Widgets Column -->
       <div class="col-md-4">
 
-        <!-- Categories Widget -->
+        <!-- Tags Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Categories</h5>
+          <h5 class="card-header">Tags</h5>
           <div class="card-body">
             <div class="row">
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">Web Design</a>
-                  </li>
-                  <li>
-                    <a href="#">HTML</a>
-                  </li>
-                  <li>
-                    <a href="#">Freebies</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">JavaScript</a>
-                  </li>
-                  <li>
-                    <a href="#">CSS</a>
-                  </li>
-                  <li>
-                    <a href="#">Tutorials</a>
-                  </li>
-                </ul>
+                  {% if page.tags.all.count %}
+                  {% for tag in page.tags.all %}
+                  <span class="badge badge-primary"><a href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a></span>
+                  {% endfor %}
+                  {% else %}
+                  No tags for this post
+                  {% endif %}
               </div>
             </div>
           </div>
