@@ -19,11 +19,15 @@
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/jthanio.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
     </head>
+    
+    {% include "navigation.html" %}
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
@@ -32,6 +36,9 @@
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/jthanio.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
