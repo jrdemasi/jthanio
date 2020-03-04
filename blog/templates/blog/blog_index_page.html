@@ -5,16 +5,60 @@
 {% block body_class %}template-blogindexpage{% endblock %}
 
 {% block content %}
-    <h1>{{ page.title }}</h1>
+<div class="container">
 
-    <div class="intro">{{ page.intro|richtext }}</div>
+    <div class="row">
 
-    {% for post in blogpages %}
-    {% with post=post.specific %}
-        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
-        <p>{{ post.intro }}</p>
-        {{ post.body|richtext }}
-    {% endwith %}
-{% endfor %}
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
 
+        <h1 class="my-4">{{ page.title }}
+          <small>{{ page.intro }}</small>
+        </h1>
+        <hr>
+
+        {% for post in blogpages %}
+        {% with post=post.specific %}
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">{{ post.title }}</h2>
+            <p class="card-text">{{ post.intro }}</p>
+            <a href="{% pageurl post %}" class="btn btn-primary">Read More</a>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on {{ post.date }}
+          </div>
+        </div>
+        {% endwith %}
+        {% endfor %}
+
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item">
+            <a class="page-link" href="#">&larr; Older</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Newer &rarr;</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+      {% include "search.html" %}
+
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+    
+      </div>
 {% endblock %}

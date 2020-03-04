@@ -11,7 +11,8 @@ from taggit.models import TaggedItemBase
 from wagtail.snippets.models import register_snippet
 
 class BlogIndexPage(Page):
-    intro = RichTextField(blank=True)
+    intro = models.CharField(max_length=500)
+
 
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron

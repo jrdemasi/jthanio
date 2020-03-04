@@ -5,5 +5,15 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    {{ page.body|richtext }}
+<div class="container">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h1 class="my-4">{{ page.title }}
+          <small>{{ page.intro }}</small>
+        </h1>
+        <hr>
 {% endblock %}
