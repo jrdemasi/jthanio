@@ -9,11 +9,24 @@
 
     <div class="row">
 
-      <!-- Blog Entries Column -->
-      <div class="col-md-8">
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
 
-        <h1 class="my-4">{{ page.title }}
-          <small>{{ page.intro }}</small>
-        </h1>
+        <!-- Title -->
+        <h1 class="mt-4">{{ page.title }}</h1>
+
         <hr>
+
+        {{ page.body|richtext }}
+
+      </div>
+
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+        {% include "search.html" %}
+      </div>
+
+    </div>
+
 {% endblock %}
+
