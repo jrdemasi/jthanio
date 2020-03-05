@@ -62,6 +62,5 @@
 
     </div>
 
-    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
-
+    <p><a href="{{ request.META.HTTP_REFERER }}">Return to previous page</a></p>
 {% endblock %}
