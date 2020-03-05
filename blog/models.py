@@ -3,6 +3,7 @@ from django import forms
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
@@ -40,6 +41,13 @@ class BlogPost(Page):
     body = RichTextField(blank=True)
     tags = ClusterTaggableManager(through=BlogPostTag, blank=True)
     categories = ParentalManyToManyField('blog.BlogCategory', blank=True)
+    
+    def main_image(self):
+        gallery_item = self.gallery_images.first()
+        if gallery_item:
+            return gallery_item.image
+        else:
+            return None
 
     search_fields = Page.search_fields + [
         index.SearchField('intro'),
@@ -52,8 +60,9 @@ class BlogPost(Page):
             FieldPanel('tags'),
             FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
         ], heading="Blog information"),
+        InlinePanel('gallery_images', label="Gallery images"),
         FieldPanel('intro'),
-        FieldPanel('body')
+        FieldPanel('body', classname="full")
     ]
 
 class BlogTagIndexPage(Page):
@@ -82,3 +91,15 @@ class BlogCategory(models.Model):
 
     class Meta:
         verbose_name_plural = 'blog categories'
+
+class BlogPostGalleryImage(Orderable):
+    page = ParentalKey(BlogPost, on_delete=models.CASCADE, related_name='gallery_images')
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+    caption = models.CharField(blank=True, max_length=250)
+
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('caption'),
+    ]

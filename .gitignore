@@ -137,3 +137,5 @@ dmypy.json
 #vscode bullshit
 .vscode/
 
+*.jpg
+

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-blogpage{% endblock %}
 
@@ -21,8 +22,9 @@
         <hr>
 
         <!-- Preview Image -->
-        <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
-
+        {% if page.main_image %}
+        {% image page.main_image fill-900x300-c100 class="img-fluid rounded" %}
+        {% endif %}
         <hr>
 
         <!-- Post Content -->
