@@ -3,10 +3,10 @@
             <h5 class="card-header">Search</h5>
             <div class="card-body">
               <div class="input-group">
-                <form action="{% url 'search' %}" method="get">
-                  <input type="text" class="form-control" placeholder="Search for..." name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
+                <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
+                  <input type="text" class="form-control mr-sm-2 btn-sm" placeholder="Search for..." name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
                 <span class="input-group-btn">
-                  <input type="submit" value="Search" class="btn btn-secondary">
+                  <input type="submit" value="Search" class="btn btn-secondary my-2 my-sm-0">
                 </form>
                 </span>
               </div>
