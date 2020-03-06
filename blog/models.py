@@ -9,6 +9,7 @@ from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.core import blocks
+from wagtailcodeblock.blocks import CodeBlock
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -51,6 +52,7 @@ class BlogPost(Page):
             ('document', DocumentChooserBlock()),
             ('media', EmbedBlock()),
             ('html', blocks.RawHTMLBlock(label='Raw HTML')),
+            ('code', CodeBlock(label='Code')),
         ])
     tags = ClusterTaggableManager(through=BlogPostTag, blank=True)
     categories = ParentalManyToManyField('blog.BlogCategory', blank=True)
