@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
@@ -24,6 +25,19 @@ class BlogIndexPage(Page):
         # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
         blogpages = self.get_children().live().order_by('-first_published_at')
+        paginator = Paginator(blogpages, 5)
+        # Try to get the ?page=x value
+        page = request.GET.get("page")
+        try:
+            # If the page exists and the ?page=x is an int
+            blogpages = paginator.page(page)
+        except PageNotAnInteger:
+            # If the ?page=x is not an int; show the first page
+            blogpages = paginator.page(1)
+        except EmptyPage:
+            # If the ?page=x is out of range (too high most likely)
+            # Then return the last page
+            blogpages = paginator.page(paginator.num_pages)
         context['blogpages'] = blogpages
         return context
 
