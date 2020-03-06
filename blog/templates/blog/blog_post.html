@@ -30,7 +30,7 @@
         <!-- Post Content -->
         <p class="lead">{{ page.intro }}</p>
 
-        {{ page.body|richtext }}
+        {% include_block page.body %}
     
 
       </div>

@@ -1,10 +1,14 @@
 from django.db import models
 from django import forms
 from wagtail.core.models import Page, Orderable
-from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
+from wagtail.documents.blocks import DocumentChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.core import blocks
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -38,7 +42,16 @@ class BlogPostTag(TaggedItemBase):
 class BlogPost(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
-    body = RichTextField(blank=True)
+    body = StreamField(
+        [
+            ('heading', blocks.CharBlock(classname="full title")),
+            ('paragraph', blocks.RichTextBlock()),
+            ('image', ImageChooserBlock()),
+            ('page', blocks.PageChooserBlock()),
+            ('document', DocumentChooserBlock()),
+            ('media', EmbedBlock()),
+            ('html', blocks.RawHTMLBlock(label='Raw HTML')),
+        ])
     tags = ClusterTaggableManager(through=BlogPostTag, blank=True)
     categories = ParentalManyToManyField('blog.BlogCategory', blank=True)
     
@@ -62,7 +75,7 @@ class BlogPost(Page):
         ], heading="Blog information"),
         InlinePanel('gallery_images', label="Gallery images"),
         FieldPanel('intro'),
-        FieldPanel('body', classname="full")
+        StreamFieldPanel('body'),
     ]
 
 class BlogTagIndexPage(Page):
