@@ -43,11 +43,11 @@
           <h5 class="card-header">Tags</h5>
           <div class="card-body">
             <div class="row">
-              <div class="col-lg-6">
+              <div class="col-lg-10">
                 <ul class="list-unstyled mb-0">
                   {% if page.tags.all.count %}
                   {% for tag in page.tags.all %}
-                  <span class="badge badge-pill badge-light"><a href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a></span>
+                  <span class="badge badge-light"><a href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a></span>
                   {% endfor %}
                   {% else %}
                   No tags for this post
