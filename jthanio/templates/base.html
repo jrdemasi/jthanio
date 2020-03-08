@@ -33,14 +33,19 @@
 
         {% block content %}{% endblock %}
 
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    
+        <footer class="footer">
+          <div class="text-center bg-dark">
+            <span class="text-muted">Copyright &copy; jthan.io {% now "Y" %}</span>
+          </div>
+        </footer>
+
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/jthanio.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
-
-
-        {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
-        {% endblock %}
     </body>
 </html>
