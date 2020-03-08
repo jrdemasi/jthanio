@@ -24,7 +24,8 @@ class BlogIndexPage(Page):
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
-        blogpages = self.get_children().live().order_by('-first_published_at')
+        # We have to add the type because we want tags and categories to live under blog
+        blogpages = self.get_children().live().order_by('-first_published_at').type(BlogPost)
         paginator = Paginator(blogpages, 5)
         # Try to get the ?page=x value
         page = request.GET.get("page")
