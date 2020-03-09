@@ -25,10 +25,10 @@
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
     </head>
+    <body class="{% block body_class %}{% endblock %}">
     <div id="page-content">
     {% include "navigation.html" %}
 
-    <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
         {% block content %}{% endblock %}
 
