@@ -30,13 +30,13 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
-
+        <div id="page-content">
         {% block content %}{% endblock %}
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
-    
+        </div>
         <footer class="footer">
           <div class="text-center bg-dark">
             <span class="text-muted">Copyright &copy; jthan.io {% now "Y" %}</span>
