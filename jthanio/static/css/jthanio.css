@@ -8,10 +8,6 @@
 
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
 
 #page-content {
   min-height: 100vh;
