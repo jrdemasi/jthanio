@@ -7,65 +7,63 @@
 
 {% block content %}
 <div class="container">
-
     <div class="row">
-
-      <!-- Blog Entries Column -->
+      {# Blog Entries Column  #}
       <div class="col-md-8">
-
         <h1 class="my-4">{{ page.title }}
           <small class="text-muted">{{ page.intro }}</small>
         </h1>
+
         <hr>
 
         {% for post in blogpages %}
-        {% with post=post.specific %}
-
-        <!-- Blog Post -->
-        <div class="card mb-4">
-          {% if post.main_image %}
-          {% image post.main_image fill-750x300-c100 class="card-img-top" %}
-          {% endif %}
-          <div class="card-body">
-            <h2 class="card-title">{{ post.title }}</h2>
-            <p class="card-text">{{ post.intro }}</p>
-            <a href="{% pageurl post %}">Read Post</a>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on {{ post.date }}
-          </div>
-        </div>
-        {% endwith %}
+          {% with post=post.specific %}
+            {# Blog Post  #}
+            <div class="card mb-4">
+              {% if post.main_image %}
+                {% image post.main_image fill-750x300-c100 class="card-img-top" %}
+              {% endif %}
+              <div class="card-body">
+                <h2 class="card-title">{{ post.title }}</h2>
+                <p class="card-text">{{ post.intro }}</p>
+                <a href="{% pageurl post %}">Read Post</a>
+              </div>
+              <div class="card-footer text-muted">
+                Posted on {{ post.date }}
+              </div>
+            </div>
+          {% endwith %}
         {% endfor %}
 
-        <!-- Pagination -->
+        {# Pagination #}
         {% if blogpages.paginator.num_pages > 1 %}
-        <ul class="pagination justify-content-center mb-4">
-        {% if blogpages.has_previous %}
-          <li class="page-item">	            
-            <a class="page-link" href="?page={{ blogpages.previous_page_number }}">&larr; Newer</a>
-          </li>
-        {% else %}
-        <li class="page-item disabled">	            
-          <a class="page-link" href="#">&larr; Newer</a>
-        </li>
-        {% endif %}
-        {% if blogpages.has_next %}
-          <li class="page-item">	            
-            <a class="page-link" href="?page={{ blogpages.next_page_number }}">Older &rarr;</a>
-          </li>
-        {% else %}
-        <li class="page-item disabled">	            
-          <a class="page-link" href="#">Older &rarr;</a>
-        </li>
-        {% endif %}
+          <ul class="pagination justify-content-center mb-4">
+            {% if blogpages.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ blogpages.previous_page_number }}">&larr; Newer</a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" href="#">&larr; Newer</a>
+              </li>
+            {% endif %}
+            {% if blogpages.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ blogpages.next_page_number }}">Older &rarr;</a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" href="#">Older &rarr;</a>
+              </li>
+            {% endif %}
+          </ul>
         {% endif %}
       </div>
 
-      <!-- Sidebar Widgets Column -->
+      {# Sidebar Widgets Column  #}
       <div class="col-md-4">
-      {% include "search.html" %}
+        {% include "search.html" %}
       </div>
-    </div>    
+    </div>
 </div>
 {% endblock %}
