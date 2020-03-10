@@ -8,7 +8,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
-      <!-- Blog Entries Column -->
+      {# Blog Entries Column  #}
       <div class="col-md-8">
         <h1 class="my-4">{{ page.title }}
           <small class="text-muted">{{ page.intro }}</small>
@@ -18,7 +18,7 @@
 
         {% for post in blogpages %}
           {% with post=post.specific %}
-            <!-- Blog Post -->
+            {# Blog Post  #}
             <div class="card mb-4">
               {% if post.main_image %}
                 {% image post.main_image fill-750x300-c100 class="card-img-top" %}
@@ -35,7 +35,7 @@
           {% endwith %}
         {% endfor %}
 
-        <!-- Pagination -->
+        {# Pagination #}
         {% if blogpages.paginator.num_pages > 1 %}
           <ul class="pagination justify-content-center mb-4">
             {% if blogpages.has_previous %}
@@ -60,7 +60,7 @@
         {% endif %}
       </div>
 
-      <!-- Sidebar Widgets Column -->
+      {# Sidebar Widgets Column  #}
       <div class="col-md-4">
         {% include "search.html" %}
       </div>

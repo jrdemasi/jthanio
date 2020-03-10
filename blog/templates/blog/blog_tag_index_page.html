@@ -4,14 +4,14 @@
 {% block content %}
 <div class="container">
     <div class="row">
-      <!-- Blog Entries Column -->
+      {# Blog Entries Column  #}
       <div class="col-md-8">
         {% if request.GET.tag|length %}
           <h1 class="my-4">Showing pages tagged "{{ request.GET.tag }}"</h1>
 
           {% for post in blogpages %}
             {% with post=post.specific %}
-              <!-- Blog Post -->
+              {# Blog Post  #}
               <div class="card mb-4">
                 <div class="card-body">
                   <h2 class="card-title">{{ post.title }}</h2>
@@ -29,7 +29,7 @@
         {% endif %}
         <p><a href="{{ request.META.HTTP_REFERER }}">Return to previous page</a></p>
       </div>
-      <!-- Sidebar Widgets Column -->
+      {# Sidebar Widgets Column  #}
       <div class="col-md-4">
         {% include "search.html" %}
       </div>
