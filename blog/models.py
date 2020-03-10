@@ -14,6 +14,7 @@ from wagtailcodeblock.blocks import CodeBlock
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.contrib.taggit import ClusterTaggableManager
+from wagtail.contrib.table_block.blocks import TableBlock
 from taggit.models import TaggedItemBase
 from wagtail.snippets.models import register_snippet
 
@@ -68,6 +69,8 @@ class BlogPost(Page):
             ('media', EmbedBlock()),
             ('html', blocks.RawHTMLBlock(label='Raw HTML')),
             ('code', CodeBlock(label='Code')),
+            ('table', TableBlock(template="blog/table_template.html")),
+
         ])
     tags = ClusterTaggableManager(through=BlogPostTag, blank=True)
     categories = ParentalManyToManyField('blog.BlogCategory', blank=True)
