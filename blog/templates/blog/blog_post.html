@@ -7,34 +7,28 @@
 {% block body_class %}template-blogpage{% endblock %}
 
 {% block content %}
-
 <div class="container">
-
     <div class="row">
-
       <!-- Post Content Column -->
       <div class="col-lg-8">
-
         <!-- Title -->
         <h1 class="mt-4">{{ page.title }}</h1>
         <!-- Date/Time -->
         {% with categories=page.categories.all %}
-        <p>Posted on {{ page.date }}{% if categories %} in {{ categories|join:", " }}{% endif %}</p>
+          <p>Posted on {{ page.date }}{% if categories %} in {{ categories|join:", " }}{% endif %}</p>
         {% endwith %}
         <hr>
 
         <!-- Preview Image -->
         {% if page.main_image %}
-        {% image page.main_image fill-900x300-c100 class="img-fluid rounded" %}
-        <hr>
+          {% image page.main_image fill-900x300-c100 class="img-fluid rounded" %}
+          <hr>
         {% endif %}
 
         <!-- Post Content -->
         <p class="lead">{{ page.intro }}</p>
 
         {% include_block page.body %}
-    
-
       </div>
 
       <!-- Sidebar Widgets Column -->
@@ -48,20 +42,18 @@
               <div class="col-lg-10">
                 <ul class="list-unstyled mb-0">
                   {% if page.tags.all.count %}
-                  {% for tag in page.tags.all %}
-                  <span class="badge badge-light"><a href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a></span>
-                  {% endfor %}
+                    {% for tag in page.tags.all %}
+                      <span class="badge badge-light"><a href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a></span>
+                    {% endfor %}
                   {% else %}
-                  No tags for this post
+                    No tags for this post
                   {% endif %}
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
-
     </div>
 
     <p><a href="{{ request.META.HTTP_REFERER }}">Return to previous page</a></p>
