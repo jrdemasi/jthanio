@@ -1,15 +1,16 @@
+/* Blog post text and tag styling
+-------------------------------------------------- */
 .badge-light a {
   color: #000000;
   font-size: 14px;
 }
 .rich-text p {
   font-size: 15px;
+  clear: right;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
-
-
 #page-content {
   min-height: 100vh;
 }
@@ -21,4 +22,17 @@
   /* Set the fixed height of the footer here */
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
+}
+
+/* Image support
+-------------------------------------------------- */
+img {
+  vertical-align: middle;
+  border-style: none;
+  max-width: 100%;
+  height: auto;
+}
+/* We need a fix for right align images */
+.richtext-image.right {
+  float: right;
 }
