@@ -18,6 +18,13 @@ from wagtail.contrib.table_block.blocks import TableBlock
 from taggit.models import TaggedItemBase
 from wagtail.snippets.models import register_snippet
 
+# RTF formatting options. Thanks, Ethan! :-) 
+features = [
+    'bold', 'italic', 'code', 'strikethrough', 'superscript', 'subscript',
+    'h2', 'h3', 'h4', 'h5', 'ol', 'ul', 'blockquote', 'hr', 'embed', 'link',
+    'document-link', 'image'
+]
+
 class BlogIndexPage(Page):
     intro = models.CharField(max_length=500)
 
@@ -62,7 +69,7 @@ class BlogPost(Page):
     body = StreamField(
         [
             ('heading', blocks.CharBlock(classname="full title")),
-            ('paragraph', blocks.RichTextBlock()),
+            ('paragraph', blocks.RichTextBlock(features=features)),
             ('image', ImageChooserBlock()),
             ('page', blocks.PageChooserBlock()),
             ('document', DocumentChooserBlock()),
