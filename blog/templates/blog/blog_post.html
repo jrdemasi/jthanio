@@ -5,6 +5,13 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-blogpage{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'js/prism.js' %}"></script>
+{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/prism.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/prism-okaidia.min.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="container">

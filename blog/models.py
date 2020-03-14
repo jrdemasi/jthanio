@@ -10,13 +10,13 @@ from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.core import blocks
-from wagtailcodeblock.blocks import CodeBlock
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from wagtail.contrib.table_block.blocks import TableBlock
 from taggit.models import TaggedItemBase
 from wagtail.snippets.models import register_snippet
+from blog.blocks import CodeBlock
 
 # RTF formatting options. Thanks, Ethan! :-) 
 features = [
