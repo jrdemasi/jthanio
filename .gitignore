@@ -140,5 +140,4 @@ dmypy.json
 *.jpg
 
 # Compiled Assets
-static
 media
