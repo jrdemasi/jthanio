@@ -164,6 +164,7 @@ WAGTAIL_SITE_NAME = "jthanio"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'https://jthan.io'
 
+# Need root dir, then define our new search backend
 ROOT_DIR = os.path.abspath(os.path.dirname(__name__))
 WAGTAILSEARCH_BACKENDS = {
     'default': {
