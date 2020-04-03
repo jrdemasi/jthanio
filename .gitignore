@@ -141,3 +141,4 @@ dmypy.json
 
 # Compiled Assets
 media
+search_index/

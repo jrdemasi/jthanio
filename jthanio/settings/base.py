@@ -163,3 +163,12 @@ WAGTAIL_SITE_NAME = "jthanio"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'https://jthan.io'
+
+ROOT_DIR = os.path.abspath(os.path.dirname(__name__))
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail_whoosh.backend',
+        'PATH': os.path.join(ROOT_DIR, 'search_index'),
+        'LANGUAGE': 'en',
+    },
+}
