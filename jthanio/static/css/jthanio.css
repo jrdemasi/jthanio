@@ -36,3 +36,8 @@ img {
 .richtext-image.right {
   float: right;
 }
+.navlogo {
+    margin-right: 15px;
+    float: left;
+    max-height: 45px;
+}
