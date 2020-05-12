@@ -13,5 +13,5 @@ COPY . /code/
 RUN /code/manage.py migrate
 ENV DJANGO_SUPERUSER_PASSWORD=admin
 RUN /code/manage.py createsuperuser --noinput --username admin --email admin@admin.com
-EXPOSE 5000
-CMD /code/manage.py runserver 0.0.0.0:5000
+EXPOSE 8000
+CMD /code/manage.py runserver 0.0.0.0:8000
