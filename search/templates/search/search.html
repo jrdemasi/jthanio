@@ -17,9 +17,8 @@
             {# Blog Post #}
             <div class="card mb-4">
               <div class="card-body">
-                <h2 class="card-title">{{ post.title }}</h2>
+                <a href="{% pageurl post %}"><h2 class="card-title">{{ post.title }}</h2></a>
                 <p class="card-text">{{ post.intro }}</p>
-                <a href="{% pageurl post %}">Read Post</a>
               </div>
               <div class="card-footer text-muted">
                 Posted on {{ post.date }}
