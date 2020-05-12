@@ -14,8 +14,9 @@
               {# Blog Post  #}
               <div class="card mb-4">
                 <div class="card-body">
-                  <a href="{% pageurl post %}"><h2 class="card-title">{{ post.title }}</h2></a>
+                  <h2 class="card-title">{{ post.title }}</h2>
                   <p class="card-text">{{ post.intro }}</p>
+                  <a href="{% pageurl post  %}" class="btn btn-primary btn-sm">Read Post &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
                   Posted on {{ post.date }}
@@ -26,7 +27,7 @@
         {% else %}
           <h1 class="my-4">No pages with tag {{request.GET.tag }} available</h1>
         {% endif %}
-        <p><a href="{{ request.META.HTTP_REFERER }}">Return to previous page</a></p>
+        <p><br><a href="{{ request.META.HTTP_REFERER }}" class="btn btn-primary btn-sm">&larr; Return to previous page</a></p>
       </div>
       {# Sidebar Widgets Column  #}
       <div class="col-md-4">
