@@ -19,7 +19,7 @@ soupsieve==2.0
 sqlparse==0.3.1
 Unidecode==1.1.1
 urllib3==1.25.9
-wagtail==2.9
+wagtail==2.9.3
 wagtail-whoosh==0.2.4
 webencodings==0.5.1
 Whoosh==2.7.4
