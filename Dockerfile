@@ -2,7 +2,7 @@ FROM archlinux:latest
 LABEL maintainer="me@jrdemasi.com"
 
 RUN pacman -Syyu --noconfirm
-RUN pacman -S --noconfirm python python-pip 
+RUN pacman -S --noconfirm python python-pip libjpeg-turbo gcc
 WORKDIR /code
 COPY ./requirements.txt /code/
 ENV VIRTUAL_ENV=/code/venv
